@@ -12,7 +12,7 @@ public class Main {
             myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "123456");
             System.out.println("Connect successful");
 
-            String sql = ("UPDATE employees " + "set email='carlitos@mail.com' " + "WHERE first_name = 'Carlos'");
+            String sql = ("DELETE FROM employees WHERE first_name = 'Carlos'");
             myStatement = myConnection.createStatement();
             int rowsAffected = myStatement.executeUpdate(sql);
 
