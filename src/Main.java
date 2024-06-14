@@ -5,18 +5,23 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) {
         Connection myConnection = null;
-        Statement myStatement = null;
+//        Statement myStatement = null;
+        PreparedStatement myPreparedStatement = null;
         ResultSet myResultSet = null;
 
         try  {
             myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "123456");
             System.out.println("Connect successful");
 
-            myStatement = myConnection.createStatement();
-            myResultSet = myStatement.executeQuery("SELECT * FROM employees");
+            String sql = ("INSERT INTO employees (first_name, pa_surname) VALUES (?, ?)");
+            myPreparedStatement = myConnection.prepareStatement(sql);
+            myPreparedStatement.setString(1, "Carlos");
+            myPreparedStatement.setString(2, "Palacios");
 
-            while (myResultSet.next()) {
-                System.out.println(myResultSet.getString("first_name"));
+            int rowsAffected = myPreparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Create new employee");
             }
         } catch ( Exception e ) {
             e.printStackTrace();
