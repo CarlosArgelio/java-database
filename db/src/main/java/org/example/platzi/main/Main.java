@@ -4,14 +4,15 @@ import java.sql.*;
 
 public class Main {
     public static void main(String[] args) {
-        Connection myConnection = null;
-        Statement myStatement = null;
-        ResultSet myResultSet = null;
+        String url = "jdbc:mysql://localhost:3306/project";
+        String user = "root";
+        String password = "123456";
 
-        try  {
-            myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/project", "root", "123456");
-            myStatement = myConnection.createStatement();
-            myResultSet = myStatement.executeQuery("SELECT * FROM employees");
+        try (
+                Connection myConnection = DriverManager.getConnection(url, user, password);
+                Statement myStatement = myConnection.createStatement();
+                ResultSet myResultSet = myStatement.executeQuery("SELECT * FROM employees");
+        ) {
             while (myResultSet.next()) {
                 System.out.println(myResultSet.getString("first_name"));
             }
