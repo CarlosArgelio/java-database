@@ -8,17 +8,18 @@ public class Employee {
     private String ma_surname;
     private  String email;
     private  Float salary;
+    private String curp;
 
-    public Employee() {
-    }
+    public Employee() {}
 
-    public Employee(String first_name, Integer id, String pa_surname, String ma_surname, String email, Float salary) {
+    public Employee(String first_name, Integer id, String pa_surname, String ma_surname, String email, Float salary, String curp) {
         this.first_name = first_name;
         this.id = id;
         this.pa_surname = pa_surname;
         this.ma_surname = ma_surname;
         this.email = email;
         this.salary = salary;
+        this.curp = curp;
     }
 
     public Integer getId() {
@@ -45,6 +46,10 @@ public class Employee {
         return salary;
     }
 
+    public String getCurp() {
+        return curp;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -68,6 +73,9 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
+    public void setCurp(String curp) {
+        this.curp = curp;
+    }
 
     @Override
     public String toString() {
@@ -77,7 +85,8 @@ public class Employee {
                 ", pa_surname='" + pa_surname + '\'' +
                 ", ma_surname='" + ma_surname + '\'' +
                 ", email='" + email + '\'' +
-                ", salary=" + salary +
+                ", salary=" + salary + '\'' +
+                ", curp=" + curp +
                 '}';
     }
 }
