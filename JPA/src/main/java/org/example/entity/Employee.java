@@ -20,6 +20,7 @@ public class Employee {
 
     private String email;
     private Float salary;
+    private String curp;
 
     public Employee() {
     }
@@ -57,6 +58,10 @@ public class Employee {
         return salary;
     }
 
+    public String getCurp() {
+        return curp;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -79,6 +84,10 @@ public class Employee {
 
     public void setSalary(Float salary) {
         this.salary = salary;
+    }
+
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
     @Override
